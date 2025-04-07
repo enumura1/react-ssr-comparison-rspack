@@ -16,7 +16,9 @@
   "include": ["src"],
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
-    }
+      "module": "ESNext"
+    },
+    "esm": true,
+    "experimentalSpecifiers": true
   }
 }

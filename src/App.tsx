@@ -1,31 +1,37 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { useState } from 'react';
+
+// ダミーデータを生成する関数
+const generateData = () => {
+  return Array.from({ length: 500 }, (_, i) => `項目 ${i + 1}`);
+};
 
 function App() {
-	const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
+  const data = generateData();
 
-	return (
-		<div className="App">
-			<div>
-				<a href="https://reactjs.org" target="_blank" rel="noreferrer">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Rspack + React + TypeScript</h1>
-			<div className="card">
-				<button type="button" onClick={() => setCount(count => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Rspack and React logos to learn more
-			</p>
-		</div>
-	);
+  return (
+    <div className="app-container">
+      <h1>React SSR パフォーマンス比較</h1>
+      
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          カウント: {count}
+        </button>
+        <p>
+          このボタンはクライアントサイドでのみ機能します
+        </p>
+      </div>
+      
+      <div className="data-list">
+        <h2>大量のデータ</h2>
+        <ul>
+          {data.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 export default App;
