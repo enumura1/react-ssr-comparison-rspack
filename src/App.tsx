@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // ダミーデータを生成する関数
 const generateData = () => {
-  return Array.from({ length: 500 }, (_, i) => `項目 ${i + 1}`);
+  return Array.from({ length: 1000 }, (_, i) => `項目 ${i + 2}`);
 };
 
 function App() {
