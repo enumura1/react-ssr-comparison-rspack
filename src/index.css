@@ -1,7 +1,7 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -26,15 +26,26 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #f7fafc;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5em;
   line-height: 1.1;
+  margin: 0 0 0.5em 0;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 0.5em 0;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: 0.5em 0;
 }
 
 button {
@@ -46,25 +57,129 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s;
 }
 button:hover {
   border-color: #646cff;
+  background-color: #2a2a2a;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* データ表示用のスタイル */
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin: 1em 0;
+}
+
+.data-item {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.data-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.data-subset {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.value {
+  display: inline-block;
+  background-color: #ebf8ff;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: #3182ce;
+  margin-top: 8px;
+}
+
+.metrics {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  max-width: 450px;
+  z-index: 1000;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.metrics:hover {
+  opacity: 1;
+}
+
+.metrics p {
+  margin: 8px 0;
+}
+
+.loading {
+  padding: 20px;
+  background-color: #f3f4f6;
+  border-radius: 5px;
+  text-align: center;
+  margin: 20px 0;
+  font-style: italic;
+  color: #6b7280;
+}
+
+.heavy-component {
+  transition: opacity 0.5s;
+  animation: fade-in 1s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
   }
-  a:hover {
-    color: #747bff;
+
+  body {
+    background-color: #1a202c;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .data-item,
+  .data-subset {
+    background-color: #2d3748;
+    border-color: #4a5568;
+  }
+
+  .value {
+    background-color: #2c5282;
+    color: #90cdf4;
+  }
+
+  .loading {
+    background-color: #2d3748;
+    color: #e2e8f0;
+  }
+
+  .metrics {
+    background-color: #2d3748 !important;
+    color: #e2e8f0 !important;
   }
 }

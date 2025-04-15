@@ -8,6 +8,7 @@
       "noEmit": false,
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
+      "skipLibCheck": true,
       "allowImportingTsExtensions": false
     },
     "include": ["src/server-*.ts"]
